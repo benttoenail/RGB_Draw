@@ -11,7 +11,9 @@ void setup()
   //Setting size of canvas to equal that of image
   size(200, 200);
   surface.setResizable(true);
-  surface.setSize(img.width, img.height);
+  int imgX = img.width;
+  int imgY = img.height;
+  surface.setSize(imgX, imgY);
   
   smooth();
   noStroke();
