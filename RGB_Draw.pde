@@ -1,4 +1,13 @@
 
+/* TODO
+-Add GUI that allows user to: 
+  -save images
+  -Clear Screen
+-Figure out "life" issue with line class
+  -the "life" variable is not having the effect I want it to...
+
+*/
+
 PImage img;
 color fillColor;
 ArrayList<Line> lines;
