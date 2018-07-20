@@ -2,7 +2,10 @@
  GUI
  -Find a better way to hide the buttons 
  
+ -Issue
+ -Every other time the program freezes
  
+ Lines
  -Figure out "life" issue with line class
  -the "life" variable is not having the effect I want it to...
  
@@ -14,7 +17,7 @@ PImage newImg;
 
 color fillColor;
 ArrayList<Line> lines;
-public boolean firstSetup = true;
+boolean firstSetup = true;
 public boolean draw = false;
 
 void setup()
@@ -22,6 +25,7 @@ void setup()
   smooth();
   noStroke();
   background(0);
+
 
   if (firstSetup == true) {
     img = loadImage("Circles-Test.jpg");
@@ -38,19 +42,11 @@ void setup()
 
 void draw()
 {
-  
   if (!firstSetup) {
     for (Line l : lines) {
-      l.run();
+      l.run(SPEED);
     }
   }
-}
-
-
-void FirstSetup()
-{
-  size(250, 250);
-  InitGUI();
 }
 
 void InitGraphics(PImage _img)
@@ -67,14 +63,6 @@ void InitGraphics(PImage _img)
   int imgY = _img.height;
   surface.setSize(imgX, imgY);
 
-  //Clear Lines ArrayList
-  if (firstSetup == false)
-  {
-    for (int i = 0; i < lines.size(); i++) {
-      lines.remove(i);
-    }
-  }
-  
   DrawGraphics(_img);
 }
 

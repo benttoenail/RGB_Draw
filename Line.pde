@@ -10,24 +10,25 @@ class Line {
     s = _s;
     pos = _pos;
     
-    speed = 2.5;
+    //speed = 2.5;
     life = 0.1;
   }
 
-  void run() {
+  void run(float _s) {
     Display();
-    Animate();
+    Animate(_s);
   }
   
   void Display() {
-    float size = 4;
+    float size = SIZE;
     size = size * s;
     
-    fill(c);
+    fill(c, 100);
     ellipse(pos.x, pos.y, size, size);
   }
 
-  void Animate() {
+  void Animate(float _s) {
+    speed = _s;
     float x = random(-speed, speed);
     float y = random(-speed, speed);
     pos.x += x;

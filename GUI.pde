@@ -5,6 +5,10 @@ Button chooseImg;
 Button reset;
 Button saveImg;
 
+int col;
+float SPEED;
+float SIZE;
+
 void InitGUI()
 {
   cp5 = new ControlP5(this);
@@ -25,10 +29,30 @@ void InitGUI()
 
   saveImg = cp5.addButton("SaveImage")
     .setBroadcast(false)
-    .setValue(0)
+    .setValue(0)  
     .setPosition(25, 85)
     .setSize(75, 25)
     .setBroadcast(true);
+    
+    cp5.addSlider("SPEED")
+    .setPosition(25, 115)
+    .setSize(100, 25)
+    .setRange(0, 255);
+    
+    cp5.addSlider("SIZE")
+    .setPosition(25, 145)
+    .setSize(100, 25)
+    .setRange(0, 255);
+    
+    saveImg = cp5.addButton("Close")
+    .setBroadcast(false)
+    .setValue(0)  
+    .setPosition(25, 175)
+    .setSize(75, 25)
+    .setBroadcast(true);
+
+    
+    col = chooseImg.getColor().getBackground();
 }
 
 public void controlEvent(ControlEvent event)
@@ -46,19 +70,28 @@ public void controlEvent(ControlEvent event)
 
   if (e == "SaveImage") {
     //Save the image
-
-    chooseImg.hide();
-    reset.hide();
-    saveImg.hide();
-    background(0);
     save(imgName+"-ProcessingEffects_"+imgCount+".png");
     imgCount++;
-    /*
-    chooseImg.show();
-    reset.show();
-    saveImg.show();
-    */
   }
+  
+  if(e == "Close"){
+   for(int i = 0; i < lines.size(); i++)
+   {
+    lines.remove(i);
+   }
+   exit();
+  }
+}
+
+
+void setLock(Controller ctrl, boolean v)
+{
+ ctrl.setLock(v);
+ if(v){
+  ctrl.setColorBackground(color(0, 0));
+ }else{
+  ctrl.setColorBackground(color(col)); 
+ }
 }
 
 
