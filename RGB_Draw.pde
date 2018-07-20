@@ -5,17 +5,21 @@ ArrayList<Line> lines;
 
 void setup()
 {
-  size(600, 600);
+  img = loadImage("Circles-Test.jpg");
+  image(img, 0, 0);
+  
+  //Setting size of canvas to equal that of image
+  size(200, 200);
+  surface.setResizable(true);
+  surface.setSize(img.width, img.height);
+  
   smooth();
   noStroke();
   background(0);
   fillColor = color(255, 0, 0);
-  
+
   lines = new ArrayList<Line>();
-  
-  img = loadImage("Circles-Test.jpg");
-  image(img, 0, 0);
-  
+
   //Initialize and draw points
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
@@ -25,17 +29,15 @@ void setup()
         PVector pos = new PVector(x, y);
         float s = norm(r, 0, 255);
         lines.add(new Line(pos, fillColor, s));
-       
       }
     }
   }
-
 }
 
 
 void draw()
 {
-  for(Line l : lines){
-   l.run(); 
+  for (Line l : lines) {
+    l.run();
   }
 }

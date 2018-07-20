@@ -10,7 +10,7 @@ class Line {
     s = _s;
     pos = _pos;
     
-    speed = 1;
+    speed = 2.5;
     life = 0.1;
   }
 
@@ -20,9 +20,9 @@ class Line {
   }
   
   void Display() {
-    float size = 3;
+    float size = 4;
     size = size * s;
-    size -= life;
+    
     fill(c);
     ellipse(pos.x, pos.y, size, size);
   }
